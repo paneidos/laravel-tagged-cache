@@ -4,8 +4,9 @@
 namespace Paneidos\LaravelTaggedCache;
 
 use Illuminate\Cache\TaggableStore;
+use Illuminate\Contracts\Cache\Store;
 
-class TaggedStore extends TaggableStore
+class TaggedStore extends TaggableStore implements Store
 {
     /**
      * @var TaggableStore
