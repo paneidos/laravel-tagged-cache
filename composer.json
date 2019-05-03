@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "php": ">= 7",
         "illuminate/cache": "^5.6,<5.9",
         "illuminate/support": "^5.6,<5.9"
     },
@@ -31,6 +32,13 @@
         "test": "phpunit",
         "check-style": "phpcs -p src/ tests/",
         "fix-style": "phpcbf -p src/ tests/"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Paneidos\\LaravelTaggedCache\\TaggedCacheServiceProvider"
+            ]
+        }
     },
     "config": {
         "sort-packages": true
