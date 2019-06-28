@@ -140,9 +140,27 @@ class TaggedStore extends TaggableStore implements Store
         return $this->backend->getPrefix();
     }
 
+    /**
+     * Begin executing a new tags operation.
+     *
+     * @param  array|mixed  $names
+     * @return \Illuminate\Cache\TaggedCache
+     */
     public function tags($names)
     {
         $tags = array_merge([$this->tag], is_array($names) ? $names : func_get_args());
         return $this->backend->tags(array_values(array_unique($tags)));
+    }
+
+    /**
+     * Dynamically call the backend driver instance.
+     *
+     * @param  string  $method
+     * @param  array  $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return $this->backend->$method(...$parameters);
     }
 }

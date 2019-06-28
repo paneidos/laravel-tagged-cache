@@ -150,4 +150,22 @@ class TaggedStoreTest extends TestCase
         $this->assertEquals('prefix:', $store1->getPrefix());
         $this->assertEquals('prefix:', $store2->getPrefix());
     }
+
+    public function testItDelegatesUnknownMethodsToBackend()
+    {
+        $backend = new class extends ArrayStore {
+            public function foo()
+            {
+                return 'bar';
+            }
+        };
+
+        $store1 = new TaggedStore($backend, 'tag1');
+        $store2 = new TaggedStore($backend, 'tag2');
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->assertEquals('bar', $store1->foo());
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->assertEquals('bar', $store2->foo());
+    }
 }
