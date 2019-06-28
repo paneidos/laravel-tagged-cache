@@ -7,6 +7,10 @@ Force a certain tag on your cache.
 
 If you use the same Memcache server for multiple projects/tenants, it might be difficult to flush the cache for only one of them. The only options is to flush the entire cache. Using Laravel's built in `TaggableStore`, it's possible to flush the cache for only one project/tenant.
 
+## How does it work?
+
+The tagged cache driver is a simple wrapper for another cache driver. All regular access to cache keys, such as `get`, `put` and `remember`, are forced to use the `tags` method and include the specified tag. Other special methods, such as `lock` are passed through without modification.
+
 # Installation
 
 To get started with Laravel Tagged Cache, use Composer to add the package to your project's dependencies:
