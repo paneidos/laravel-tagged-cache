@@ -141,6 +141,16 @@ class TaggedStore extends TaggableStore implements Store
     }
 
     /**
+     * Get the backend store.
+     *
+     * @return TaggableStore
+     */
+    public function getBackend()
+    {
+        return $this->backend;
+    }
+
+    /**
      * Begin executing a new tags operation.
      *
      * @param  array|mixed  $names

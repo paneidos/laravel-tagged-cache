@@ -168,4 +168,15 @@ class TaggedStoreTest extends TestCase
         /** @noinspection PhpUndefinedMethodInspection */
         $this->assertEquals('bar', $store2->foo());
     }
+
+    public function testItExposesTheBackend()
+    {
+        $backend = new ArrayStore();
+
+        $store1 = new TaggedStore($backend, 'tag1');
+        $store2 = new TaggedStore($backend, 'tag2');
+
+        $this->assertSame($backend, $store1->getBackend());
+        $this->assertSame($backend, $store2->getBackend());
+    }
 }
