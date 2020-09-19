@@ -36,7 +36,7 @@ return [
         ],
         // ...
     ],
-]
+];
 ```
 
 ## Example: replace your default store
@@ -54,12 +54,12 @@ return [
         ],
         // ...
     ],
-]
+];
 ```
 
 # Compatibility
 
-Currently works with Laravel 5.6, 5.7 and 5.8.
+Currently works with Laravel 5.6 and higher.
 The backend can be any store with support for tags. Note: the file store does *not* support tags.
 
 # Development
